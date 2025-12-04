@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaDrop | Initiative by St Xavier's Burdwan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #2ecc71; /* Fresh Green */
+            --primary-dark: #27ae60;
+            --secondary: #3498db; /* Water Blue */
+            --dark: #2c3e50;
+            --light: #f9f9f9;
+            --white: #ffffff;
+            --text-gray: #555;
+            --shadow-card: 0 10px 30px rgba(0,0,0,0.08);
+            --shadow-hover: 0 15px 35px rgba(0,0,0,0.15);
+            --gradient: linear-gradient(135deg, #2ecc71 0%, #3498db 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-btn {
+            padding: 0.7rem 1.5rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 204, 113, 0.6);
+            color: white;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-outline {
+            padding: 0.8rem 2rem;
+            border: 2px solid white;
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--text-gray);
+        }
+
+        /* --- THE PROBLEM --- */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-card);
+            text-align: center;
+            transition: 0.3s;
+            border-top: 4px solid transparent;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            border-top: 4px solid var(--secondary);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .problem-card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            background: #eef7ff;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+        }
+
+        .problem-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* --- THE SOLUTION (Split Layout) --- */
+        .solution {
+            background-color: var(--light);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .solution-img {
+            flex: 1 1 400px;
+            position: relative;
+        }
+
+        .solution-img img {
+            border-radius: 20px;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .solution-img::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100px;
+            height: 100px;
+            background: var(--primary);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .solution-content {
+            flex: 1 1 400px;
+        }
+
+        .solution-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .feature-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .feature-list i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 4px;
+        }
+
+   
+
+        /* --- HOW IT WORKS (Timeline) --- */
+        .steps {
+            background: var(--dark);
+            color: white;
+        }
+
+        .steps-header h2 {
+            color: white;
+        }
+
+        .step-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        /* Connecting line for desktop */
+        .step-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: rgba(255,255,255,0.2);
+            z-index: 0;
+            display: none;
+        }
+        @media(min-width: 768px) {
+            .step-container::before { display: block; }
+        }
+
+        .step-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--dark);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: 0.3s;
+        }
+
+        .step-item:hover .step-number {
+            background: var(--primary);
+            color: white;
+        }
+
+        .step-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-item p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1a252f;
+            color: white;
+            padding: 3rem 10% 1rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+            .nav-links {
+                display: none; /* Hidden on mobile for simple layout */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            section {
+                padding: 3rem 5%;
+            }
+            .solution {
+                flex-direction: column-reverse;
+            }
+            .step-container::before {
+                display: none;
+            }
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-droplet"></i> AquaDrop <span style="font-size: 0.6em; margin-left: 8px; font-weight: 400; opacity: 0.8;">| St Xavier's Burdwan</span>
+        </div>
+        <div class="nav-links">
+            <a href="#problem">The Problem</a>
+            <a href="#solution">How it Works</a>
+            <a href="#steps">Get Started</a>
+        </div>
+        <a href="#steps" class="cta-btn">Join the Movement</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-bottom: 10px; color: #a9dfbf;">Proudly Practiced by St Xavier's Burdwan</p>
+            <h1>Sustaining Life,<br>One Bottle at a Time.</h1>
+            <p>Empowering People through low-cost, high-efficiency drip irrigation using recycled plastics. A solution for the planet and the people.</p>
+            <div class="hero-buttons">
+                <a href="#solution" class="btn-outline">Learn More</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- The Problem Section -->
+    <section id="problem">
+        <div class="section-header">
+            <h2>The Global Challenge</h2>
+            <p>We are facing a dual crisis: water scarcity in agriculture and rampant plastic pollution clogging our ecosystems.</p>
+        </div>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <i class="fa-solid fa-water-ladder"></i>
+                <h3>Water Scarcity</h3>
+                <p>Traditional irrigation wastes up to 60% of water. In arid regions, this defines the line between harvest and hunger.</p>
+            </div>
+            <div class="problem-card">
+                <i class="fa-solid fa-bottle-water"></i>
+                <h3>Plastic Waste</h3>
+                <p>Millions of plastic bottles end up in landfills daily. They take 450 years to decompose, poisoning our soil and oceans.</p>
+            </div>
+            <div class="problem-card">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <h3>High Costs</h3>
+                <p>Commercial drip irrigation systems are expensive to install and maintain, making them inaccessible to small-scale farmers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Solution Section -->
+    <section id="solution" class="solution">
+        <div class="solution-img">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fim.indiatimes.in%2Fcontent%2F2020%2FJul%2FFacebook-Image-7_5f1ef5991098a.jpg&f=1&nofb=1&ipt=ce6923f7cc5a3c532bc04db7c22eac2c8449f9982a3c1b65cf8cbadd144c93a6?q=80&w=2070&auto=format&fit=crop" alt="Drip Irrigation Close up">
+        </div>
+        <div class="solution-content">
+            <h2>The DIY Revolution</h2>
+            <p>The "Bottle Drip" method repurposes waste to create life. By perforating used plastic bottles and burying them near plant roots, we create a slow-release watering system.</p>
+            <ul class="feature-list">
+                <li><i class="fa-solid fa-check-circle"></i> <strong>90% Efficiency:</strong> Water is delivered directly to the Plant Zone.</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Zero Cost:</strong> Utilizes trash that is readily available. (U can start from a plastic drinking bottle..)</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Scalable:</strong> Works for a single balcony plant or an acre of crops.</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- Step by Step Section -->
+    <section id="steps" class="steps">
+        <div class="section-header steps-header">
+            <h2>How to Build Your Own</h2>
+            <p>Simple steps to transform waste into a resource. It's That Easy</p>
+        </div>
+        <div class="step-container">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <h4>Collect & Clean</h4>
+                <p>Gather used PET  (same type of bottle recommended like Bisleri for better structural integrity) bottles (1L or 2L). Remove labels and wash thoroughly to prevent mold.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <h4>Perforate</h4>
+                <p>Use a hot needle to poke 3-4 small holes near the bottom and sides of the bottle.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <h4>Bury</h4>
+                <p>Dig a hole next to your plant. Bury the bottle up to the neck, leaving the cap accessible.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <h4>Fill & Cap</h4>
+                <p>Fill with water. Close the cap loosely to control flow speed. Refill every few days.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="color: white; margin-bottom: 1rem;">
+                    <i class="fa-solid fa-droplet" style="color: var(--primary);"></i> AquaDrop
+                </div>
+                <p style="color: #bbb; font-size: 0.9rem;">
+                    Bridging the gap between agricultural necessity and environmental responsibility. An initiative championed by St Xavier's Burdwan.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="https://sxs-bwn.org" target="_blank">School Website</a></li>
+                    <li><a href="#">Donate</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="copyright">
+            &copy; 2023 AquaDrop Initiative by St Xavier's Burdwan. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
