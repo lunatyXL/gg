@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sustainable bottle drip irrigation initiative by St Xavier's Burdwan.">
+    <title>AquaDrop | Initiative by St Xavier's Burdwan</title>
+
+    <!-- External Assets: Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- 
+      NAVIGATION 
+      Uses fixed positioning and glassmorphism in CSS.
+    -->
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-droplet"></i> AquaDrop 
+            <span class="logo-subtitle">| St Xavier's Burdwan</span>
+        </div>
+        
+        <!-- Desktop Menu -->
+        <div class="nav-links">
+            <a href="#problem">The Problem</a>
+            <a href="#solution">How it Works</a>
+            <a href="#impact">Social Impact</a>
+            <a href="#steps">Get Started</a>
+        </div>
+        
+        <a href="#steps" class="cta-btn">Join the Movement</a>
+    </nav>
+
+    <!-- 
+      HERO SECTION
+      Implements parallax background effect.
+    -->
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Proudly Practiced by St Xavier's Burdwan</p>
+            <h1>Sustaining Life,<br>One Bottle at a Time.</h1>
+            <p>Empowering communities through low-cost, high-efficiency drip irrigation using recycled plastics. A solution for the planet and the people.</p>
+            
+            <div class="hero-buttons">
+                <!-- Updated to outline style per request -->
+                <a href="#solution" class="btn-outline">Learn More</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 
+      PROBLEM SECTION
+      Uses CSS Grid for responsive card layout.
+    -->
+    <section id="problem">
+        <div class="section-header">
+            <h2>The Global Challenge</h2>
+            <p>We are facing a dual crisis: water scarcity in agriculture and rampant plastic pollution clogging our ecosystems.</p>
+        </div>
+        
+        <div class="problem-grid">
+            <!-- Card 1 -->
+            <div class="problem-card">
+                <i class="fa-solid fa-water-ladder"></i>
+                <h3>Water Scarcity</h3>
+                <p>Traditional irrigation wastes up to 60% of water. In arid regions, this defines the line between harvest and hunger.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="problem-card">
+                <i class="fa-solid fa-bottle-water"></i>
+                <h3>Plastic Waste</h3>
+                <p>Millions of plastic bottles end up in landfills daily. They take 450 years to decompose, poisoning our soil and oceans.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="problem-card">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <h3>High Costs</h3>
+                <p>Commercial drip irrigation systems are expensive to install and maintain, making them inaccessible to small-scale farmers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+      SOLUTION SECTION
+      Split layout (Image Left / Text Right).
+    -->
+    <section id="solution" class="solution">
+        <div class="solution-img">
+            <img src="https://images.unsplash.com/photo-1591857177580-dc82b9e4e119?q=80&w=2070&auto=format&fit=crop" alt="Drip Irrigation Close up" loading="lazy">
+        </div>
+        <div class="solution-content">
+            <h2>The DIY Revolution</h2>
+            <p>The "Bottle Drip" method repurposes waste to create life. By perforating used plastic bottles and burying them near plant roots, we create a slow-release watering system.</p>
+            <ul class="feature-list">
+                <li><i class="fa-solid fa-check-circle"></i> <strong>90% Efficiency:</strong> Water is delivered directly to the root zone.</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Zero Cost:</strong> Utilizes trash that is readily available.</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Evaporation Control:</strong> Sub-surface delivery prevents sun evaporation.</li>
+                <li><i class="fa-solid fa-check-circle"></i> <strong>Scalable:</strong> Works for a single balcony plant or an acre of crops.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 
+      IMPACT SECTION
+      Image cards with hover overlay effects.
+    -->
+    <section id="impact">
+        <div class="section-header">
+            <h2>Solving Social Problems</h2>
+            <p>This isn't just about gardening; it's about social equity, food security, and community resilience.</p>
+        </div>
+        <div class="impact-container">
+            <div class="impact-card">
+                <img src="https://images.unsplash.com/photo-1595279641773-f9a888a76e93?q=80&w=2070&auto=format&fit=crop" alt="Community Farming" loading="lazy">
+                <div class="impact-overlay">
+                    <h3>Food Security</h3>
+                    <p>Enabling families in "food deserts" to grow nutrient-rich vegetables with minimal resources, ensuring no child goes to bed hungry.</p>
+                </div>
+            </div>
+            <div class="impact-card">
+                <img src="https://images.unsplash.com/photo-1589923188900-a58315720974?q=80&w=2070&auto=format&fit=crop" alt="Woman Farmer" loading="lazy">
+                <div class="impact-overlay">
+                    <h3>Economic Empowerment</h3>
+                    <p>Smallholder farmers reduce overhead costs on water and expensive equipment, increasing their profit margins and financial stability.</p>
+                </div>
+            </div>
+            <div class="impact-card">
+                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb7d5c73?q=80&w=2070&auto=format&fit=crop" alt="Teaching kids" loading="lazy">
+                <div class="impact-overlay">
+                    <h3>Education & Awareness</h3>
+                    <p>At St Xavier's Burdwan, we use this method to teach biology, physics, and responsibility, turning students into eco-conscious citizens.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+      STEPS SECTION
+      Horizontal timeline layout.
+    -->
+    <section id="steps" class="steps">
+        <div class="section-header steps-header">
+            <h2>How to Build Your Own</h2>
+            <p>Simple steps to transform waste into a resource.</p>
+        </div>
+        <div class="step-container">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <h4>Collect & Clean</h4>
+                <p>Gather used PET bottles (1L or 2L). Remove labels and wash thoroughly to prevent mold.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <h4>Perforate</h4>
+                <p>Use a hot needle to poke 3-4 small holes near the bottom and sides of the bottle.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <h4>Bury</h4>
+                <p>Dig a hole next to your plant. Bury the bottle up to the neck, leaving the cap accessible.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <h4>Fill & Cap</h4>
+                <p>Fill with water. Close the cap loosely to control flow speed. Refill every few days.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo logo-white">
+                    <i class="fa-solid fa-droplet icon-primary"></i> AquaDrop
+                </div>
+                <p class="footer-desc">
+                    Bridging the gap between agricultural necessity and environmental responsibility. An initiative championed by St Xavier's Burdwan.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="https://sxs-bwn.org" target="_blank">School Website</a></li>
+                    <li><a href="#">Our Projects</a></li>
+                    <li><a href="#">Volunteer</a></li>
+                    <li><a href="#">Donate</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="https://sxs-bwn.org" target="_blank" title="School Website"><i class="fa-solid fa-globe"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 AquaDrop Initiative by St Xavier's Burdwan. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

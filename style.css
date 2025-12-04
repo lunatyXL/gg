@@ -1,0 +1,597 @@
+
+
+/* ------------------------------------------------------------------
+   1. DESIGN SYSTEM & VARIABLES for Auqasite stuff
+      forked from Lunaty Corp 
+------------------------------------------------------------------ */
+:root {
+
+    --primary: #2ecc71;      
+    --primary-dark: #27ae60;
+    --secondary: #3498db;    
+    --accent: #a9dfbf;       /* Soft Green for subtitles */
+    
+ 
+    --dark: #2c3e50;
+    --light: #f9f9f9;
+    --white: #ffffff;
+    --text-gray: #555;
+
+    --gradient: linear-gradient(135deg, #2ecc71 0%, #3498db 100%);
+    --shadow-card: 0 10px 30px rgba(0,0,0,0.08);
+    --shadow-hover: 0 15px 35px rgba(0,0,0,0.15);
+    
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* ------------------------------------------------------------------
+   2. RESET & GLOBAL STYLES
+------------------------------------------------------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--dark);
+    background-color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden; 
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block; 
+}
+
+/* ------------------------------------------------------------------
+   3. NAVIGATION COMPONENT
+   Uses backdrop-filter for the "Frosted Glass" effect.
+------------------------------------------------------------------ */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    z-index: 1000; /* Stays above all content */
+    
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px); 
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-dark);
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    color: var(--secondary);
+}
+
+.logo-subtitle {
+    font-size: 0.6em; 
+    margin-left: 8px; 
+    font-weight: 400; 
+    opacity: 0.8;
+}
+
+/* Nav Links with Hover Underline Animation */
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--dark);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Primary CTA Button */
+.cta-btn {
+    padding: 0.7rem 1.5rem;
+    background: var(--gradient);
+    color: white;
+    border-radius: 50px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.6);
+    color: white;
+}
+
+/* ------------------------------------------------------------------
+   4. HERO SECTION
+   Parallax Background & Animations.
+------------------------------------------------------------------ */
+.hero {
+    height: 100vh;
+    width: 100%;
+    /* Layered background: Dark overlay + Image */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
+                url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    
+    /* Parallax Magic: Image stays fixed while content scrolls */
+    background-attachment: fixed; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+    /* Native CSS Animation */
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-subtitle {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--accent);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn-outline {
+    padding: 0.8rem 2rem;
+    border: 2px solid white;
+    color: white;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: var(--dark);
+}
+
+/* ------------------------------------------------------------------
+   5. SHARED SECTION STYLES
+------------------------------------------------------------------ */
+section {
+    padding: 5rem 10%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Decorative underline for section headers */
+.section-header h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--gradient);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.section-header p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--text-gray);
+}
+
+/* ------------------------------------------------------------------
+   6. PROBLEM SECTION (Grid System)
+------------------------------------------------------------------ */
+.problem-grid {
+    display: grid;
+    /* Responsive Magic: Auto-fit creates columns based on available space */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.problem-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-card);
+    text-align: center;
+    transition: 0.3s;
+    border-top: 4px solid transparent;
+}
+
+.problem-card:hover {
+    transform: translateY(-10px);
+    border-top: 4px solid var(--secondary);
+    box-shadow: var(--shadow-hover);
+}
+
+.problem-card i {
+    font-size: 3rem;
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+    background: #eef7ff;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+}
+
+.problem-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+/* ------------------------------------------------------------------
+   7. SOLUTION SECTION (Flexbox Split)
+------------------------------------------------------------------ */
+.solution {
+    background-color: var(--light);
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on mobile */
+    align-items: center;
+    gap: 4rem;
+}
+
+.solution-img {
+    flex: 1 1 400px; 
+    position: relative;
+}
+
+.solution-img img {
+    border-radius: 20px;
+    box-shadow: var(--shadow-hover);
+}
+
+/* Decorative circle behind image */
+.solution-img::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100px;
+    height: 100px;
+    background: var(--primary);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+.solution-content {
+    flex: 1 1 400px;
+}
+
+.solution-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+}
+
+.feature-list li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.feature-list i {
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-top: 4px;
+}
+
+/* ------------------------------------------------------------------
+   8. IMPACT SECTION (Image Overlay Cards)
+------------------------------------------------------------------ */
+.impact-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.impact-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    height: 400px;
+    color: white;
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+}
+
+.impact-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+/* Gradient overlay text area */
+.impact-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.2) 60%, transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem;
+    transition: 0.3s;
+}
+
+/* Zoom effect on hover */
+.impact-card:hover img {
+    transform: scale(1.1);
+}
+
+.impact-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.impact-card p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* ------------------------------------------------------------------
+   9. STEPS SECTION (Timeline)
+------------------------------------------------------------------ */
+.steps {
+    background: var(--dark);
+    color: white;
+}
+
+.steps-header h2 {
+    color: white;
+}
+
+.step-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 3rem;
+    position: relative;
+}
+
+/* Connector Line (Desktop Only) */
+.step-container::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.2);
+    z-index: 0;
+    display: none;
+}
+@media(min-width: 768px) {
+    .step-container::before { display: block; }
+}
+
+.step-item {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    position: relative;
+    z-index: 1; /* Sits above connector line */
+}
+
+.step-number {
+    width: 80px;
+    height: 80px;
+    background: var(--dark);
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: 0.3s;
+}
+
+.step-item:hover .step-number {
+    background: var(--primary);
+    color: white;
+}
+
+.step-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.step-item p {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+}
+
+/* ------------------------------------------------------------------
+   10. FOOTER
+------------------------------------------------------------------ */
+footer {
+    background-color: #1a252f;
+    color: white;
+    padding: 3rem 10% 1rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.logo-white {
+    color: white; 
+    margin-bottom: 1rem;
+}
+
+.icon-primary {
+    color: var(--primary);
+}
+
+.footer-desc {
+    color: #bbb; 
+    font-size: 0.9rem;
+}
+
+.footer-col h4 {
+    margin-bottom: 1.2rem;
+    color: var(--primary);
+}
+
+.footer-col ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-col ul li a:hover {
+    color: var(--primary);
+    padding-left: 5px;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.social-links a:hover {
+    background: var(--primary);
+}
+
+.copyright {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    padding-top: 1.5rem;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+}
+
+/* ------------------------------------------------------------------
+   11. ANIMATIONS & KEYFRAMES
+------------------------------------------------------------------ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ------------------------------------------------------------------
+   12. MOBILE RESPONSIVENESS
+   Adjustments for screens smaller than 768px.
+------------------------------------------------------------------ */
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem;
+    }
+    .nav-links {
+        display: none; /* Mobile menu functionality not implemented for this demo */
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    section {
+        padding: 3rem 5%;
+    }
+    .solution {
+        flex-direction: column-reverse; /* Stack image on top of text */
+    }
+}
